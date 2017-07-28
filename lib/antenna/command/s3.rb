@@ -19,6 +19,7 @@ command :s3 do |c|
   c.option '-i', '--base BASE', "Base filename (optional, defaults to IPA filename without .ipa extension)"
   c.option '-p', '--public', "Use public instead of signed URLs (you'll probably want '--acl public-read' as well)"
   c.option '--acl ACL', "Permissions for uploaded files. Must be one of: private, public-read, public-read-write, authenticated-read, bucket-owner-read, bucket-owner-full-control (optional, defaults to private)"
+  c.option '-o', '--output OUTPUT', "Filename for html output (optional, will default to index.html)"
 
   c.action do |args, options|
     determine_file! unless @file = options.file
@@ -47,7 +48,8 @@ command :s3 do |c|
       :public => !!options.public,
       :expire => options.expires, 
       :acl    => options.acl, 
-      :base   => options.base 
+      :base   => options.base,
+      :output => options.output
     } 
   end
 

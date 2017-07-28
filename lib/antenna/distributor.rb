@@ -9,7 +9,7 @@ module Antenna
     end
 
     def distribute(ipa_file, options = {})
-      base_filename = options[:base] || File.basename(ipa_file, ".ipa")
+      base_filename = options[:base] || "#{Time.now.to_i}-#{File.basename(ipa_file, ".ipa")}"
 
       # Let distributor set things up (if necessary)
       @distributor.setup(ipa_file, options) if @distributor.respond_to?(:setup)
@@ -41,9 +41,11 @@ module Antenna
       
       # Distribute HTML
       html = build_html(ipa, manifest_url, app_icon_url)
+      output_filename = options[:output] || index
+
       html_url = @distributor.distribute(
         html.to_s,
-        "index.html",
+        "#{output_filename}.html",
         "text/html",
       )
 
