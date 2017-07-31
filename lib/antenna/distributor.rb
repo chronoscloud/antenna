@@ -41,7 +41,7 @@ module Antenna
       
       # Distribute HTML
       html = build_html(ipa, manifest_url, app_icon_url)
-      output_filename = options[:output] || index
+      output_filename = options[:output] || "index"
 
       html_url = @distributor.distribute(
         html.to_s,
