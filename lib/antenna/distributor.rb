@@ -38,6 +38,15 @@ module Antenna
         "#{base_filename}.plist",
         "text/xml",
       )
+
+      # Distribute Manifest for Version Tracking
+      output_filename = options[:output] ? "#{options[:output]}-version" : "version"
+
+      manifest_url = @distributor.distribute(
+          manifest.to_s,
+          "#{output_filename}.plist",
+          "text/xml",
+      )
       
       # Distribute HTML
       html = build_html(ipa, manifest_url, app_icon_url)
