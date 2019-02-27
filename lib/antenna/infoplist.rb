@@ -41,7 +41,17 @@ module Antenna
       else
         if icons = infoplist_data["CFBundleIcons"]
           if primary_icon = icons["CFBundlePrimaryIcon"]
-            @bundle_icons = self.class.determine_icons(primary_icon["CFBundleIconFiles"])
+            if icon_files = primary_icon["CFBundleIconFiles"]
+              @bundle_icons = self.class.determine_icons(icon_files)
+            end
+          end
+        end
+
+        if icons = infoplist_data["CFBundleIcons~ipad"]
+          if primary_icon = icons["CFBundlePrimaryIcon"]
+            if icon_files = primary_icon["CFBundleIconFiles"]
+              @bundle_icons = self.class.determine_icons(icon_files)
+            end
           end
         end
       end
