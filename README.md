@@ -47,6 +47,7 @@ $ antenna
     -i  --base BASE                             Base filename (optional, defaults to IPA filename without .ipa extension)
     -p  --public                                Use public instead of signed URLs (you'll might want '--acl public-read' also)
         --acl ACL                               Permissions for uploaded files. Must be one of: private, public-read, public-read-write, authenticated-read, bucket-owner-read, bucket-owner-full-control (optional, defaults to private)
+    -o  --o                                     Output file - default is index.html
 ```
 
 ### Local-specific options
